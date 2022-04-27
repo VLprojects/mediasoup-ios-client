@@ -12,6 +12,7 @@
 #define Transport_h
 
 @class RTCPeerConnectionFactory;
+typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
 
 @interface Transport : NSObject
 /*! @brief libmediasoupclient Transport object */
@@ -54,7 +55,7 @@
     @param iceServers List of TURN servers to provide the local peerconnection with
  */
 -(void)updateIceServers:(NSString *)iceServers;
--(void)updateIceTransportPolicy:(NSString *)policy;
+-(void)updateIceTransportPolicy:(RTCIceTransportPolicy)policy;
 
 /*! @brief Closes the transport, including all its producers and consumers */
 -(void)close;

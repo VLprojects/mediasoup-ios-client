@@ -27,6 +27,7 @@
 +(bool)isNativeClosed:(NSValue *)nativeTransport;
 +(void)nativeRestartIce:(NSValue *)nativeTransport iceParameters:(NSString *)iceParameters;
 +(void)nativeUpdateIceServers:(NSValue *)nativeTransport iceServers:(NSString *)iceServers;
++(void)nativeUpdateIceTransportPolicy:(NSValue *)nativeTransport policy:(RTCIceTransportPolicy)policy;
 +(void)nativeClose:(NSValue *)nativeTransport;
 +(NSValue *)nativeGetNativeTransport:(NSValue *)nativeTransport;
 +(void)nativeFreeSendTransport:(NSValue *)nativeTransport;

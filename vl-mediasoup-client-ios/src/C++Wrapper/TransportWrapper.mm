@@ -11,6 +11,7 @@
 #import <Foundation/Foundation.h>
 #import <WebRTC/RTCMediaStreamTrack.h>
 #import <WebRTC/RTCRtpEncodingParameters.h>
+#import "peerconnection/RTCConfiguration+Private.h"
 #import "Logger.hpp"
 #import "wrapper/TransportWrapper.h"
 
@@ -102,6 +103,21 @@ using namespace mediasoupclient;
         NSString *message = [NSString stringWithUTF8String:e.what()];
         NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
         
+        throw exception;
+    }
+}
+
++(void)nativeUpdateIceTransportPolicy:(NSValue *)nativeTransport policy:(RTCIceTransportPolicy)policy {
+    MSC_TRACE();
+
+    try {
+        auto nativeType = [RTCConfiguration nativeTransportsTypeForTransportPolicy:policy];
+        [TransportWrapper extractNativeTransport:nativeTransport]->UpdateIceTransportType(nativeType);
+    } catch (const std::exception &e) {
+        MSC_ERROR("%s", e.what());
+        NSString *message = [NSString stringWithUTF8String:e.what()];
+        NSException* exception = [NSException exceptionWithName:@"RuntimeException" reason:message userInfo:nil];
+
         throw exception;
     }
 }

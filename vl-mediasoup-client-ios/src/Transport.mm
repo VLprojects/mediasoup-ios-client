@@ -50,6 +50,10 @@
     [TransportWrapper nativeUpdateIceServers:self._nativeTransport iceServers:iceServers];
 }
 
+-(void)updateIceTransportPolicy:(RTCIceTransportPolicy)policy {
+    [TransportWrapper nativeUpdateIceTransportPolicy:self._nativeTransport policy:policy];
+}
+
 -(void)close {
     [TransportWrapper nativeClose:self._nativeTransport];
 }
