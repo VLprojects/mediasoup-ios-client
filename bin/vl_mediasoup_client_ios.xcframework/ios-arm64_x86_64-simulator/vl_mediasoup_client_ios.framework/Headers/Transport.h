@@ -54,6 +54,8 @@
     @param iceServers List of TURN servers to provide the local peerconnection with
  */
 -(void)updateIceServers:(NSString *)iceServers;
+-(void)updateIceTransportPolicy:(NSString *)policy;
+
 /*! @brief Closes the transport, including all its producers and consumers */
 -(void)close;
 
